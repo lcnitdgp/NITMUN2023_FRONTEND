@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: #740000 ;
+
+}
+
+.gallerytxt{
+color: antiquewhite;
+font-size: 45px;
+margin-left: 45%;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 100px;
+  gap: 0px 20px;
+  width: clamp(70vmin, 900px, 90%);
+margin-left: 20%;
+
+  
+  &:has(img:hover) img:not(:hover) {
+    filter: brightness(0.35);
+  }
+
+  & img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(0 20px, 100% 0, 100% calc(100% - 20px), 0 100%);
+    transition: clip-path 0.5s, transform 0.5s, filter 0.75s;
+    transform: scale(1);
+    
+    &:nth-child(3n):not(:nth-last-child(-n+4)) { 
+      grid-row: span 2;
+    }
+    
+    &:nth-child(14n):not(:nth-last-child(-n+4)) { 
+      grid-row: span 2;
+    }
+    
+    &:hover {
+      transform: scale(1.3);
+      z-index: 1;
+      width: 100%;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      transition: clip-path 0.5s, transform 0.5s, filter 0.5s;
+    }
+  }
+  
+  & .spacer {
+    background: #c00;
+    clip-path: polygon(0 20px, 100% 0, 100% calc(100% - 20px), 0 100%);
+    box-sizing: border-box;
+  }
+  
+  & .quote {
+    grid-row: span 3;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #eee;
+    font-family: Montserrat;
+    font-size: 0.9em;
+    
+    & span {
+      text-wrap: balance;
+      margin: 0 auto 15px auto;
+      max-width: 80%;
+      line-height: 1.5;
+      
+      &::before {
+        content: "\"";
+        font-size: 4em;
+        font-family: Georgia, 'Palatino Linotype','Times New Roman', serif;
+        vertical-align: middle;
+        line-height: 0;
+        color: #fff8;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 700px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media all and (max-width: 500px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media all and (max-width: 400px) {
+  .gallery {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
