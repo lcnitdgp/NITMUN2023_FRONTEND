@@ -20,7 +20,7 @@ const AboutSection = () => {
         </Slide>
       </div>
       <div className="about-image">
-        <img src="./nitmunweb/bestlc.jpg" alt="Top view"/>
+        <img src="./nitmunweb/mun.jpg" alt="Top view"/>
       </div>
     </div>
   )
